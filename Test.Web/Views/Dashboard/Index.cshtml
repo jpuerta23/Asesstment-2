@@ -1,0 +1,92 @@
+@model DashboardViewModel
+
+@{
+    ViewData["Title"] = "Dashboard";
+}
+
+<h1>Dashboard</h1>
+
+<p>
+    <a asp-controller="Empleados" asp-action="Index" class="btn btn-secondary">Manage Employees</a>
+    <a asp-controller="Account" asp-action="Logout" class="btn btn-danger">Logout</a>
+</p>
+
+<div class="row mb-4">
+    <div class="col-md-4">
+        <div class="card text-white bg-primary mb-3">
+            <div class="card-header">Total Empleados</div>
+            <div class="card-body">
+                <h5 class="card-title">@Model.TotalEmpleados</h5>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-4">
+        <div class="card text-white bg-warning mb-3">
+            <div class="card-header">En Vacaciones</div>
+            <div class="card-body">
+                <h5 class="card-title">@Model.EmpleadosEnVacaciones</h5>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-4">
+        <div class="card text-white bg-success mb-3">
+            <div class="card-header">Activos</div>
+            <div class="card-body">
+                <h5 class="card-title">@Model.EmpleadosActivos</h5>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-md-12">
+        <div class="card">
+            <div class="card-header">
+                AI Assistant (Gemini)
+            </div>
+            <div class="card-body">
+                <div class="form-group">
+                    <label for="question">Ask a question about the employees:</label>
+                    <input type="text" class="form-control" id="question" placeholder="e.g., Who has the highest salary?">
+                </div>
+                <button type="button" class="btn btn-primary mt-2" onclick="askAI()">Ask</button>
+                
+                <div class="mt-3">
+                    <strong>Answer:</strong>
+                    <p id="answer" class="text-muted">...</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    <script>
+        async function askAI() {
+            const question = document.getElementById('question').value;
+            const answerElement = document.getElementById('answer');
+            
+            answerElement.innerText = "Thinking...";
+            
+            try {
+                const response = await fetch('/Dashboard/AskAI', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/x-www-form-urlencoded',
+                    },
+                    body: `question=${encodeURIComponent(question)}`
+                });
+                
+                if (response.ok) {
+                    const data = await response.json();
+                    answerElement.innerText = data.answer;
+                } else {
+                    answerElement.innerText = "Error getting answer.";
+                }
+            } catch (error) {
+                console.error('Error:', error);
+                answerElement.innerText = "An error occurred.";
+            }
+        }
+    </script>
+}
