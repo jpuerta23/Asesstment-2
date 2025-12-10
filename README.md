@@ -2,6 +2,8 @@
 
 **Author:** JHon freddy puerta
 
+**GitHub Repository:** [https://github.com/jpuerta23/Asesstment-2](https://github.com/jpuerta23/Asesstment-2)
+
 ## Overview
 
 This is a comprehensive Employee Management System built with **.NET 8**, designed to manage employee records, authentication, and reporting. The solution follows a layered architecture and includes a Web MVC application, a RESTful API, and a comprehensive test suite.
