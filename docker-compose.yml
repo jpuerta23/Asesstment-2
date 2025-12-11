@@ -1,20 +1,21 @@
 
 services:
-  postgres:
-    image: postgres:16
-    environment:
-      POSTGRES_USER: postgres
-      POSTGRES_PASSWORD: password
-      POSTGRES_DB: TestDb
-    ports:
-      - "5433:5432"
-    volumes:
-      - postgres_data:/var/lib/postgresql/data
-    healthcheck:
-      test: ["CMD-SHELL", "pg_isready -U postgres"]
-      interval: 5s
-      timeout: 5s
-      retries: 5
+  # PostgreSQL local (comentado - descomenta si quieres usar base de datos local)
+  # postgres:
+  #   image: postgres:16
+  #   environment:
+  #     POSTGRES_USER: postgres
+  #     POSTGRES_PASSWORD: password
+  #     POSTGRES_DB: TestDb
+  #   ports:
+  #     - "5433:5432"
+  #   volumes:
+  #     - postgres_data:/var/lib/postgresql/data
+  #   healthcheck:
+  #     test: ["CMD-SHELL", "pg_isready -U postgres"]
+  #     interval: 5s
+  #     timeout: 5s
+  #     retries: 5
 
   test-api:
     build:
@@ -24,7 +25,7 @@ services:
       - "5000:8080"
     environment:
       - ASPNETCORE_ENVIRONMENT=Development
-      - ConnectionStrings__DefaultConnection=Host=postgres;Database=TestDb;Username=postgres;Password=password
+      - ConnectionStrings__DefaultConnection=Host=dpg-d4tgtgshg0os73cug2vg-a.oregon-postgres.render.com;Database=posgres_8ufp;Username=posgres_8ufp_user;Password=RM9WKjH6SBDIHIvIBFzfnBwLmypIo0LZ;Port=5432;SSL Mode=Require;Trust Server Certificate=true
       - Jwt__Key=ThisIsASecureKeyForJwtAuthentication123!
       - Jwt__Issuer=Test.Api
       - Jwt__Audience=Test.Web
@@ -34,9 +35,6 @@ services:
       - EmailSettings__SmtpPassword=rmxs vvqd sted hgwq
       - EmailSettings__SenderName=Test
       - EmailSettings__SenderEmail=puertajhon023@gmail.com
-    depends_on:
-      postgres:
-        condition: service_healthy
 
   test-web:
     build:
@@ -45,13 +43,12 @@ services:
     ports:
       - "5001:8080"
     environment:
-      - ConnectionStrings__DefaultConnection=Host=postgres;Database=TestDb;Username=postgres;Password=password
+      - ConnectionStrings__DefaultConnection=Host=dpg-d4tgtgshg0os73cug2vg-a.oregon-postgres.render.com;Database=posgres_8ufp;Username=posgres_8ufp_user;Password=RM9WKjH6SBDIHIvIBFzfnBwLmypIo0LZ;Port=5432;SSL Mode=Require;Trust Server Certificate=true
       - Gemini__ApiKey=YOUR_API_KEY_HERE
     depends_on:
-      postgres:
-        condition: service_healthy
       test-api:
         condition: service_started
 
-volumes:
-  postgres_data:
+# Volumen para PostgreSQL local (comentado)
+# volumes:
+#   postgres_data:

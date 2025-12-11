@@ -60,42 +60,45 @@ This solution follows **Clean Architecture** principles:
 
 1.  Clone the repository.
 2.  Navigate to the solution root.
-3.  Run the following command:
+3.  **Configure Environment**:
+    - Copy `.env.example` to `.env`.
+    - Update the variables in `.env` if necessary (e.g., for local DB or custom settings).
+    - The project is pre-configured to use the **Render PostgreSQL database**.
+
+4.  Run the following command:
 
     ```bash
     docker compose up --build
     ```
 
-4.  Access the applications:
+5.  Access the applications:
     - **Web App**: [http://localhost:5001](http://localhost:5001)
     - **API Swagger**: [http://localhost:5000/swagger](http://localhost:5000/swagger)
-    - **PostgreSQL**: `localhost:5433` (mapped from container port 5432)
+    - **PostgreSQL**: The application now connects to Render by default. To use local DB, uncomment the postgres service in `docker-compose.yml`.
 
-5.  **Default Login Credentials**:
+6.  **Default Login Credentials**:
     ```
     Username: admin
     Password: admin
     ```
     > ⚠️ **Note**: Change these credentials in production! The default admin user is seeded automatically on first run.
 
-6.  To stop the containers:
+7.  To stop the containers:
     ```bash
     docker compose down
     ```
 
-7.  To remove all data and start fresh:
-    ```bash
-    docker compose down -v
-    ```
-
-
 ### 🏃 Running Locally
 
-1.  **Configure Database**: Update `ConnectionStrings` in `appsettings.Development.json` for both `Test.Api` and `Test.Web`.
+1.  **Configure Database**:
+    - The project is configured to use the Render database in `appsettings.json`.
+    - To use a local database, update `ConnectionStrings` in `appsettings.Development.json` for both `Test.Api` and `Test.Web`.
+
 2.  **Apply Migrations**:
     ```bash
     dotnet ef database update --project Test.Infrastructure --startup-project Test.Web
     ```
+
 3.  **Run API**:
     ```bash
     cd Test.Api
