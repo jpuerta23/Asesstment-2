@@ -22,7 +22,7 @@ services:
       context: .
       dockerfile: Test.Api/Dockerfile
     ports:
-      - "5000:8080"
+      - "5002:8080"
     environment:
       - ASPNETCORE_ENVIRONMENT=Development
       - ConnectionStrings__DefaultConnection=Host=dpg-d4tgtgshg0os73cug2vg-a.oregon-postgres.render.com;Database=posgres_8ufp;Username=posgres_8ufp_user;Password=RM9WKjH6SBDIHIvIBFzfnBwLmypIo0LZ;Port=5432;SSL Mode=Require;Trust Server Certificate=true
@@ -41,7 +41,7 @@ services:
       context: .
       dockerfile: Test.Web/Dockerfile
     ports:
-      - "5001:8080"
+      - "5003:8080"
     environment:
       - ConnectionStrings__DefaultConnection=Host=dpg-d4tgtgshg0os73cug2vg-a.oregon-postgres.render.com;Database=posgres_8ufp;Username=posgres_8ufp_user;Password=RM9WKjH6SBDIHIvIBFzfnBwLmypIo0LZ;Port=5432;SSL Mode=Require;Trust Server Certificate=true
       - Gemini__ApiKey=YOUR_API_KEY_HERE

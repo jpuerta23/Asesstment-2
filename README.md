@@ -72,8 +72,8 @@ This solution follows **Clean Architecture** principles:
     ```
 
 5.  Access the applications:
-    - **Web App**: [http://localhost:5001](http://localhost:5001)
-    - **API Swagger**: [http://localhost:5000/swagger](http://localhost:5000/swagger)
+    - **Web App**: [http://localhost:5003](http://localhost:5003)
+    - **API Swagger**: [http://localhost:5002/swagger](http://localhost:5002/swagger)
     - **PostgreSQL**: The application now connects to Render by default. To use local DB, uncomment the postgres service in `docker-compose.yml`.
 
 6.  **Default Login Credentials**:
