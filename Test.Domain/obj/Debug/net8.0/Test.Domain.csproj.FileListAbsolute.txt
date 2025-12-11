@@ -1,0 +1,12 @@
+/home/Coder/Vídeos/Asesstment-2/Test.Domain/bin/Debug/net8.0/Test.Domain.deps.json
+/home/Coder/Vídeos/Asesstment-2/Test.Domain/bin/Debug/net8.0/Test.Domain.dll
+/home/Coder/Vídeos/Asesstment-2/Test.Domain/bin/Debug/net8.0/Test.Domain.pdb
+/home/Coder/Vídeos/Asesstment-2/Test.Domain/obj/Debug/net8.0/Test.Domain.GeneratedMSBuildEditorConfig.editorconfig
+/home/Coder/Vídeos/Asesstment-2/Test.Domain/obj/Debug/net8.0/Test.Domain.AssemblyInfoInputs.cache
+/home/Coder/Vídeos/Asesstment-2/Test.Domain/obj/Debug/net8.0/Test.Domain.AssemblyInfo.cs
+/home/Coder/Vídeos/Asesstment-2/Test.Domain/obj/Debug/net8.0/Test.Domain.csproj.CoreCompileInputs.cache
+/home/Coder/Vídeos/Asesstment-2/Test.Domain/obj/Debug/net8.0/Test.Domain.sourcelink.json
+/home/Coder/Vídeos/Asesstment-2/Test.Domain/obj/Debug/net8.0/Test.Domain.dll
+/home/Coder/Vídeos/Asesstment-2/Test.Domain/obj/Debug/net8.0/refint/Test.Domain.dll
+/home/Coder/Vídeos/Asesstment-2/Test.Domain/obj/Debug/net8.0/Test.Domain.pdb
+/home/Coder/Vídeos/Asesstment-2/Test.Domain/obj/Debug/net8.0/ref/Test.Domain.dll
